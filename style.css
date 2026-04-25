@@ -1,460 +1,137 @@
-/* --- CSS VARIABLES (Updated Foodish Colors) --- */
 :root {
-    --bg-dark: #3A2A22; /* Rich, deep earth/coffee brown */
-    --fire-red: #C93F2B; /* Deep chili/tomato red */
-    --gold: #DDA651; /* Warm honey gold */
-    --cream: #F6EFE2; /* Warmer, rich cream */
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'DM Sans', sans-serif;
+    --deep-brown: #1A1210;
+    --warm-black: #251B18;
+    --steak-red: #D32F2F;
+    --toasted-gold: #E0A340;
+    --soft-cream: #F5F1ED;
 }
 
-/* --- BASE STYLES --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--cream);
-    font-family: var(--font-body);
-    font-size: 16px;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background-color: var(--deep-brown); 
+    color: var(--soft-cream); 
+    font-family: 'DM Sans', sans-serif;
     line-height: 1.6;
 }
 
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    font-weight: 700;
-}
+h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
 
-h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--gold);
-}
-
-section {
-    padding: 5rem 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* --- BUTTONS --- */
-.btn {
-    display: inline-flex;
+/* Captivating Hero with "Gourmet" Gradient */
+.hero {
+    height: 90vh;
+    display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(26,18,16,0.6), rgba(26,18,16,0.9)), 
+                url('images/hero.jpg') center/cover no-repeat;
+    /* This color kicks in if image is missing */
+    background-color: #2a1d1a; 
+}
+
+.hero-subtitle {
+    color: var(--toasted-gold);
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.hero h1 { font-size: 4.5rem; margin: 1rem 0; line-height: 1.1; }
+.text-gold { color: var(--toasted-gold); }
+
+/* Buttons */
+.btn {
+    padding: 1rem 2rem;
     text-decoration: none;
-    font-weight: 700;
-    border-radius: 4px;
-    min-height: 48px;
-    padding: 0 1.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    font-weight: bold;
+    transition: 0.3s;
+    border-radius: 2px;
+    display: inline-block;
 }
 
-.btn-primary {
-    background-color: var(--fire-red);
-    color: var(--cream);
-}
+.btn-primary { background: var(--steak-red); color: white; }
+.btn-primary:hover { background: #b71c1c; transform: translateY(-2px); }
 
-.btn-primary:hover {
-    background-color: #A03222; /* Darker red on hover */
-}
+.btn-outline { border: 2px solid var(--toasted-gold); color: var(--toasted-gold); }
 
-.btn-outline {
-    background-color: transparent;
-    border-color: var(--gold);
-    color: var(--gold);
-}
-
-.btn-outline:hover {
-    background-color: var(--gold);
-    color: var(--bg-dark);
-}
-
-.btn-full {
-    width: 100%;
-}
-
-/* --- 1. STICKY NAVIGATION --- */
+/* Sticky Nav */
 .navbar {
     position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgba(58, 42, 34, 0.95); /* Semi-transparent updated background */
-    backdrop-filter: blur(10px);
+    top: 0; width: 100%;
+    padding: 1.5rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    background: rgba(26, 18, 16, 0.95);
     z-index: 1000;
-    border-bottom: 1px solid rgba(221, 166, 81, 0.2); /* Semi-transparent updated gold */
+    border-bottom: 1px solid rgba(224, 163, 64, 0.2);
 }
 
-.logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--cream);
-}
+.logo span { color: var(--steak-red); }
 
-.logo span {
-    color: var(--fire-red);
-}
-
-.nav-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-/* --- 2. HERO SECTION --- */
-.hero {
-    height: 100vh;
-    background-image: url('images/hero.jpg');
-    background-color: #2a1d1a;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 1.5rem;
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(58, 42, 34, 0.7), var(--bg-dark));
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    color: var(--cream);
-    line-height: 1.1;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: var(--gold);
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-/* --- 3. SOCIAL PROOF BAR --- */
+/* Social Proof Motion */
 .social-proof {
+    background: var(--toasted-gold);
+    color: var(--deep-brown);
+    padding: 1rem 0;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.proof-track {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 1.5rem;
-    background-color: #2D211A; /* Slightly darker updated brown */
-    border-top: 1px solid rgba(246, 239, 226, 0.1);
-    border-bottom: 1px solid rgba(246, 239, 226, 0.1);
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 2rem;
+    justify-content: space-around;
+    min-width: 100%;
 }
 
-.proof-item {
-    font-weight: 700;
-    color: var(--gold);
-}
+/* Menu & Cards */
+.section-tag { color: var(--steak-red); text-align: center; font-weight: bold; }
+h2 { text-align: center; font-size: 3rem; margin-top: 0.5rem; margin-bottom: 3rem; }
 
-/* --- 4. TODAY'S SPECIALS --- */
-.grid-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
+.grid-cards { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
 
 .card {
-    background-color: #2D211A;
+    background: var(--warm-black);
+    width: 350px;
     border-radius: 8px;
     overflow: hidden;
-    padding-bottom: 1.5rem;
-    text-align: center;
-    border: 1px solid rgba(221, 166, 81, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-.card-img {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 1rem;
-}
+.card-img { height: 250px; background-color: #333; }
+.card-body { padding: 1.5rem; }
+.price { color: var(--toasted-gold); font-size: 1.5rem; font-weight: bold; display: block; margin-top: 1rem; }
 
-.card h3 {
-    color: var(--cream);
-    margin-bottom: 0.5rem;
+/* Form Styling */
+.booking { background: var(--warm-black); }
+.book-form { display: flex; flex-direction: column; gap: 1rem; }
+.book-form input {
+    padding: 1rem;
+    background: #1A1210;
+    border: 1px solid #444;
+    color: white;
 }
+.form-row { display: flex; gap: 1rem; }
 
-.card p {
-    font-size: 0.9rem;
-    padding: 0 1rem;
-    margin-bottom: 1rem;
-    opacity: 0.8;
+/* Menu Tabs */
+.tabs { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+.tab-btn { 
+    background: none; border: none; color: #888; 
+    font-size: 1.2rem; cursor: pointer; font-weight: bold;
 }
+.tab-btn.active { color: var(--toasted-gold); border-bottom: 2px solid var(--toasted-gold); }
 
-.price {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    color: var(--fire-red);
-    font-weight: 700;
-}
-
-/* --- 5. FULL MENU (TABBED) --- */
-.tabs {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-}
-
-.tab-btn {
-    background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    min-height: 48px;
-    padding: 0 2rem;
-    border-radius: 30px;
-    cursor: pointer;
-    font-family: var(--font-body);
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-.tab-btn.active, .tab-btn:hover {
-    background: var(--gold);
-    color: var(--bg-dark);
-}
-
-.tab-content {
-    display: none;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-}
-
-.tab-content.active {
-    display: grid;
-    animation: fadeIn 0.5s ease;
-}
+.tab-content { display: none; max-width: 800px; margin: 0 auto; }
+.tab-content.active { display: block; }
 
 .menu-item {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dashed rgba(246, 239, 226, 0.2);
-    padding-bottom: 1rem;
+    display: flex; justify-content: space-between;
+    padding: 1rem 0; border-bottom: 1px solid #333;
 }
 
-.menu-info h4 {
-    font-size: 1.25rem;
-    color: var(--cream);
-}
-
-.menu-info p {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    margin-top: 0.25rem;
-}
-
-.menu-price {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    color: var(--fire-red);
-    font-size: 1.25rem;
-    white-space: nowrap;
-    margin-left: 1rem;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- 6. FIND US --- */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-}
-
-.contact-card, .hours-card {
-    background-color: #2D211A;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    display: block;
-    text-decoration: none;
-    color: var(--cream);
-    border: 1px solid rgba(221, 166, 81, 0.2);
-}
-
-.contact-card.whatsapp {
-    border-color: #25D366; /* WhatsApp Green hint retained */
-}
-
-.contact-card h4, .hours-card h4 {
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-}
-
-.hours-card table {
-    width: 100%;
-}
-
-.hours-card td {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(246, 239, 226, 0.1);
-}
-
-.map-container {
-    height: 100%;
-    min-height: 350px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 2px solid var(--gold);
-}
-
-/* --- 7. BOOK A TABLE FORM --- */
-.book-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #2D211A;
-    padding: 2.5rem;
-    border-radius: 8px;
-    border: 1px solid rgba(221, 166, 81, 0.2);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--gold);
-}
-
-input {
-    width: 100%;
-    min-height: 48px;
-    background-color: var(--bg-dark);
-    border: 1px solid rgba(246, 239, 226, 0.2);
-    color: var(--cream);
-    padding: 0 1rem;
-    border-radius: 4px;
-    font-family: var(--font-body);
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--fire-red);
-}
-
-/* --- 8. FOOTER --- */
-footer {
-    background-color: #221813; /* Even deeper updated brown */
-    padding: 4rem 1.5rem 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(246, 239, 226, 0.1);
-}
-
-.footer-logo {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-.footer-logo span { color: var(--fire-red); }
-
-.footer-links {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.footer-links a {
-    color: var(--gold);
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: var(--cream);
-}
-
-.copyright {
-    opacity: 0.5;
-    font-size: 0.9rem;
-}
-
-/* --- 9. FLOATING ORDER BUTTON --- */
-.floating-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366; /* WhatsApp Green retained */
-    color: #fff;
-    padding: 1rem 1.5rem;
-    border-radius: 30px;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    z-index: 999;
-    display: none;
-}
-
-/* --- RESPONSIVE DESIGN (MOBILE) --- */
+/* Mobile Adjustments */
 @media (max-width: 768px) {
-    .nav-actions .btn-outline {
-        display: none;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .map-container {
-        height: 300px;
-    }
-
-    .book-form {
-        padding: 1.5rem;
-    }
-
-    .floating-btn {
-        display: block; 
-    }
+    h1 { font-size: 2.5rem; }
+    .navbar { padding: 1rem; }
 }
